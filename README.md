@@ -26,15 +26,15 @@ In order to run this code, first a Redshift cluster must be launched and an IAM 
 
 Let's say we want a list of all the artists that each user listens to. The `songplays` table can be queried to give us this information. 
 
-`SELECT sp.user_id, u.first_name, u.last_name, a.name AS artist_name
-FROM public.songplays AS sp
-JOIN public.users AS u
-ON sp.user_id = u.user_id
-JOIN public.artists AS a
-ON sp.artist_id = a.artist_id
-GROUP BY sp.user_id, u.first_name, u.last_name, a.name
-ORDER BY sp.user_id, a.name 
-LIMIT 10`
+	SELECT sp.user_id, u.first_name, u.last_name, a.name AS artist_name
+	FROM public.songplays AS sp
+	JOIN public.users AS u
+	ON sp.user_id = u.user_id
+	JOIN public.artists AS a
+	ON sp.artist_id = a.artist_id
+	GROUP BY sp.user_id, u.first_name, u.last_name, a.name
+	ORDER BY sp.user_id, a.name 
+	LIMIT 10
 
 The result is: 
 
@@ -54,12 +54,12 @@ user_id | first_name | last_name | artist_name
 
 As another example, say we wanted the locations where Sparkify has the most free tier users. The following code returns the locations with free users, sorted by the most free users first.
 
-`SELECT COUNT(user_id) AS number_of_users, location
-FROM public.songplays
-WHERE level = 'free'
-GROUP BY location
-ORDER BY number_of_users DESC
-LIMIT 10`
+	SELECT COUNT(user_id) AS number_of_users, location
+	FROM public.songplays
+	WHERE level = 'free'
+	GROUP BY location
+	ORDER BY number_of_users DESC
+	LIMIT 10
 
 The result is: 
 
