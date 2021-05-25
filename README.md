@@ -1,6 +1,6 @@
 ### Introduction
 
-A music streaming startup, Sparkify, has grown their user base and song database and want to move their processes and data onto the cloud. Their data resides in S3, in a directory of JSON logs on user activity on the app, as well as a directory with JSON metadata on the songs in their app.
+A hypothetical music streaming startup has grown their user base and song database and want to move their processes and data onto the cloud. Their data resides in S3, in a directory of JSON logs on user activity on the app, as well as a directory with JSON metadata on the songs in their app.
 
 I have built an ETL pipeline using AWS that extracts their data from S3, stages it in Redshift, and transforms data into a set of dimensional tables for their analytics team use for finding insights on what users are listening to. 
 
@@ -12,7 +12,7 @@ My database is a star schema with `songplays` as its fact table, and `users`, `s
 
 ### How to Run
 
-In order to run this code, first a Redshift cluster must be launched and an IAM role must be configured. Then, `dwh.cfg` must be edited to  contain the correct information for connecting to the cluster such as the cluster endpoint, database name, database username, database password, IAM role, etc. Running `create_tables.py` will connect to the cluster and drop any previously created tables if there are any, and then create empty tables. Running `etl.py` will then copy data from S3 into the two staging tables `staging_events`, and `staging_songs`. These staging tables contain copies of the unprocessed data that are then used to populate the database tables. `etl.py` uses SQL INSERT statements to populate the fact table and 4 dimension tables using one or both of the staging tables. Hosting these staging tables on Redshift allows for efficient computation by reducing load on the ETL server.   
+In order to run this code, first a Redshift cluster must be launched and an IAM role must be configured. Then, `dwh.cfg` must be edited to  contain the correct information for connecting to the cluster such as the cluster endpoint, database name, database username, database password, IAM role, etc. Running `create_tables.py` will connect to the cluster and drop any previously created tables if there are any, and then create empty tables. Running `etl.py` will then copy data from S3 into the two staging tables `staging_events`, and `staging_songs`. These staging tables contain copies of the unprocessed data that are then used to populate the database tables. `etl.py` uses SQL INSERT statements to populate the fact table and 4 dimension tables using one or both of the staging tables. Hosting these staging tables on Redshift allows for efficient computation by reducing load on the ETL server.
 
 ### File Descriptions
 
