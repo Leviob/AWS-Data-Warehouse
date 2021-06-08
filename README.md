@@ -52,7 +52,7 @@ user_id | first_name | last_name | artist_name
 12 | Austin | Rosales | Kid Cudi / Kanye West / Common
 
 
-As another example, say we wanted the locations where Sparkify has the most free tier users. The following code returns the locations with free users, sorted by the most free users first.
+As another example, say we wanted the locations where our hypothetical streaming service has the most free tier users. The following code returns the locations with free users, sorted by the most free users first.
 
 	SELECT COUNT(user_id) AS number_of_users, location
 	FROM public.songplays
